@@ -34,7 +34,7 @@ module.exports.update = async (req,res)=>{
         return res.status(404).json({mssg:"Note doesn't exist !"})
      } 
     // console.log(ans);
-    res.status(200).json({mssg:"Successfully updated a note !"});
+    res.status(200).json(ans);
 }
 module.exports.delete = async (req,res)=>{
     let {id} = req.params;

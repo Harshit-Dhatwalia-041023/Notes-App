@@ -6,7 +6,6 @@ import api from "../lib/axios"
 import { useNavigate } from "react-router"
 const NoteDetailPage = () => {
   const [note,setnote] = useState(null);
-  // let [newcontent,setContent] = useState("")
   let [loading,setLoading] = useState(false);
   const navigate =useNavigate();
   const {id} = useParams()
@@ -46,9 +45,10 @@ const NoteDetailPage = () => {
     }
      if(!window.confirm("Are you sure want to edit this note ?")) return;
     try{
+       setLoading(true)
     await api.put(`/notes/${id}`,{title:note.title,content:note.content});
      toast.success("Successfully updating")
-     setLoading(true);
+    ;
       navigate("/");
     }
     catch(err){
